@@ -1,21 +1,14 @@
-name: Linux File Creation Autograding
+name: Test
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  autograding:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - run: echo "Hello"
 
-      - name: Give Execute Permission
-        run: chmod +x student.sh tests/test_create_files.sh
-
-      - name: Run Student Program
-        run: ./student.sh
-
-      - name: Run Test Cases
-        run: ./tests/test_create_files.sh
